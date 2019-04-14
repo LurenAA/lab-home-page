@@ -35,6 +35,7 @@ return [
     //资源位置
     'tpl_replace_string'  =>  [
         '__CSS__'=> '../../../public/static/index/css',
-        '__JS__' => '../../../static/index/javascript',
+        '__JS__' => '../../../public/static/index/script',
+        '__ASSET__' => '../../../public/static/index/asset'
     ]
 ];

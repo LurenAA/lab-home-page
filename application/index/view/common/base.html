@@ -3,23 +3,48 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="__CSS__/base.css">
+    <link rel="icon" type="image/png" href="__ASSET__/logo.png">
     {block name="title"}<title>网站标题</title>{/block}  
   </head>
   <body>
-    <header class = 'header'>
-
+    <header class = 'container-fluid header-class'>
+      <div class = 'row-div'>
+        <div class = 'col-1 logo-div'>
+          <img src = '__ASSET__/logo.png' class = 'img-fluid-diy'>
+        </div>
+        <div class = 'logo-name'>
+          <span>这是实验室名称</span>
+          <div class="w-100"></div>
+          <span>THIS IS ENGLISH NAME</span>
+        </div>
+        <div class = 'col'></div>
+        <nav>
+          <a>关于我们</a>
+          <a>科研方向</a>
+          <a>团队</a>
+          <a>成果</a>
+          <a>资产管理</a>
+        </nav>
+        <button type="button" class = 'icon-btn'>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header> 
-    {block name="body"}<div>网站主体</div>{/block}
-    {block name="footer"}<footer>网站底部</footer>{/block}
+    {block name="body"}<div></div>{/block}
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    {block name="footer"}<footer></footer>{/block}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   </body>
