@@ -6,6 +6,10 @@
   .ab-title > h2 {
     font-size: 20px;
   }
+
+  .us-info {
+    max-width: 100% !important;
+  }
 }
 .ab-title {
   position: absolute;
@@ -50,19 +54,22 @@
 }
 
 .about-us {
-  padding: 60px 10px 0px;
-  text-align: center;
-  height: 1000px;
+  padding: 0 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.about-us > h1 {
+.us-title {
+  width: 100%;
+  max-height: 100px;
+  text-align: center;
   font-size: 24px;
   font-weight: bold;
   letter-spacing: 3px;
   color: #064f9e;
-  margin-bottom: 44px;
+  margin: 60px 0 44px;
 }
-.about-us > h1::after {
+.us-title::after {
   content: '';
   display: block;
   position: relative;
@@ -73,8 +80,8 @@
 }
 
 .us-info {
-  width: 50%;
-  display: inline-block;
+  flex: 0 0 50%;
+  max-width: 50%;
 }
 .us-info > p {
   text-indent: 32px;
@@ -206,4 +213,9 @@
 
 .wekit-clamp-native-29 {
   -webkit-line-clamp: 29;
+}
+
+.flex-util {
+  width: 500px;
+  height: 1px;
 }

@@ -18,6 +18,10 @@ $(document).ready(function(){
   $('.carousel-control-prev-diy').height(picHeight)
   $('.carousel-control-next-diy').height(picHeight)
 
-  $clamp('.us-info>p')
+  $clamp('.us-info>p', {
+    clamp: 6,
+    lang: 'Ch',
+    tailHtml: '<a id = "watchDetail" href = "https://v4.bootcss.com/">查看详情</a>'
+  })
 });
 
