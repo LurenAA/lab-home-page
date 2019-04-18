@@ -1,0 +1,107 @@
+@import './util';
+@media only screen and (max-width: 576px) { 
+  .ab-title > h1{
+    font-size: 25px;
+  }
+
+  .ab-title > h2 {
+    font-size: 20px;
+  }
+}
+
+.ab-title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  transform: translate3d(-50%,-50%, 0);
+  font-weight: 200;
+  letter-spacing: 15px;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+  font-size: 45px;
+  text-align: center;
+
+  > h2{
+    letter-spacing: 10px;
+  }
+}
+
+
+%base-control {
+  position: absolute;
+  top: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 15%;
+  color: #fff;
+  text-align: center;
+  opacity: .5;  
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.carousel-control-prev-diy{
+  @extend %base-control;
+  left: 0;
+}
+
+.carousel-control-next-diy{
+  @extend %base-control;
+  right: 0;
+}
+
+.about-us{
+  padding: 60px 10px 0px;
+  text-align: center;
+  height: 1000px;
+}
+
+.about-us > h1 {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: $title-color;
+  margin-bottom: 44px;
+
+  &::after{
+    content: '';
+    display: block;
+    position: relative;
+    width: 36px;
+    height: 5px;
+    background-color: $background-color;
+    margin: 10px auto 0;
+  }
+}
+
+.us-info{
+  width: 50%;
+  display: inline-block;
+  > p{
+    text-indent: $normal-font-size * 2;
+    font-size: $normal-font-size;
+    line-height: 40px;
+    letter-spacing: 2px;
+    @include justify-par;
+  }
+}
+
+%base-wekit-clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient:vertical; 
+  display: -webkit-box;
+}
+
+@for $i from 1 to 30 {
+  .wekit-clamp-native-#{$i} {
+    @extend %base-wekit-clamp;
+    -webkit-line-clamp: #{$i}
+  }
+}
