@@ -1,30 +1,8 @@
-@media only screen and (max-width: 576px) {
-  .ab-title > h1 {
-    font-size: 25px;
-  }
-
-  .ab-title > h2 {
-    font-size: 20px;
-  }
-
-  .us-info {
-    max-width: 100% !important;
-  }
-}
-.ab-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: #fff;
-  transform: translate3d(-50%, -50%, 0);
-  font-weight: 200;
-  letter-spacing: 15px;
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
-  font-size: 45px;
-  text-align: center;
-}
-.ab-title > h2 {
-  letter-spacing: 10px;
+.wekit-clamp-native-1, .wekit-clamp-native-2, .wekit-clamp-native-3, .wekit-clamp-native-4, .wekit-clamp-native-5, .wekit-clamp-native-6, .wekit-clamp-native-7, .wekit-clamp-native-8, .wekit-clamp-native-9, .wekit-clamp-native-10, .wekit-clamp-native-11, .wekit-clamp-native-12, .wekit-clamp-native-13, .wekit-clamp-native-14, .wekit-clamp-native-15, .wekit-clamp-native-16, .wekit-clamp-native-17, .wekit-clamp-native-18, .wekit-clamp-native-19, .wekit-clamp-native-20, .wekit-clamp-native-21, .wekit-clamp-native-22, .wekit-clamp-native-23, .wekit-clamp-native-24, .wekit-clamp-native-25, .wekit-clamp-native-26, .wekit-clamp-native-27, .wekit-clamp-native-28, .wekit-clamp-native-29 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 
 .carousel-control-prev-diy, .carousel-control-next-diy {
@@ -45,6 +23,39 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+@media only screen and (max-width: 761px) {
+  .ab-title > h1 {
+    font-size: 25px;
+  }
+
+  .ab-title > h2 {
+    font-size: 20px;
+  }
+
+  .us-info {
+    max-width: 100% !important;
+  }
+
+  .about-us {
+    padding: 0 20px 0 !important;
+  }
+}
+.ab-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  transform: translate3d(-50%, -50%, 0);
+  font-weight: 200;
+  letter-spacing: 15px;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+  font-size: 45px;
+  text-align: center;
+}
+.ab-title > h2 {
+  letter-spacing: 10px;
+}
+
 .carousel-control-prev-diy {
   left: 0;
 }
@@ -54,7 +65,7 @@
 }
 
 .about-us {
-  padding: 0 10px 0px;
+  padding: 0 100px 0px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -82,6 +93,7 @@
 .us-info {
   flex: 0 0 50%;
   max-width: 50%;
+  padding: 0 20px;
 }
 .us-info > p {
   text-indent: 32px;
@@ -90,13 +102,6 @@
   letter-spacing: 2px;
   text-align: justify;
   text-align-last: left;
-}
-
-.wekit-clamp-native-1, .wekit-clamp-native-2, .wekit-clamp-native-3, .wekit-clamp-native-4, .wekit-clamp-native-5, .wekit-clamp-native-6, .wekit-clamp-native-7, .wekit-clamp-native-8, .wekit-clamp-native-9, .wekit-clamp-native-10, .wekit-clamp-native-11, .wekit-clamp-native-12, .wekit-clamp-native-13, .wekit-clamp-native-14, .wekit-clamp-native-15, .wekit-clamp-native-16, .wekit-clamp-native-17, .wekit-clamp-native-18, .wekit-clamp-native-19, .wekit-clamp-native-20, .wekit-clamp-native-21, .wekit-clamp-native-22, .wekit-clamp-native-23, .wekit-clamp-native-24, .wekit-clamp-native-25, .wekit-clamp-native-26, .wekit-clamp-native-27, .wekit-clamp-native-28, .wekit-clamp-native-29 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
 }
 
 .wekit-clamp-native-1 {
@@ -216,6 +221,31 @@
 }
 
 .flex-util {
-  width: 500px;
+  width: 700px;
   height: 1px;
+  display: block;
+}
+
+.show-pic {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%;
+  height: 0;
+}
+
+.pic-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  border-image-repeat: stretch;
+  transition: opacity 0.6s linear;
+  opacity: 0;
+}
+
+.active-pic {
+  opacity: 1;
 }

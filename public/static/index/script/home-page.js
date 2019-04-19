@@ -18,10 +18,36 @@ $(document).ready(function(){
   $('.carousel-control-prev-diy').height(picHeight)
   $('.carousel-control-next-diy').height(picHeight)
 
-  $clamp('.us-info>p', {
-    clamp: 6,
-    lang: 'Ch',
-    tailHtml: '<a id = "watchDetail" href = "https://v4.bootcss.com/">查看详情</a>'
-  })
+  let height = window.innerWidth
+  if(height < 578) {
+    $clamp('.us-info>p', {
+      clamp: 4,
+      tailHtml: '<a id = "watchDetail" href = "https://v4.bootcss.com/">查看详情</a>'
+    })
+  } else if (height > 578) {
+    $clamp('.us-info>p', {
+      clamp: 8,
+      tailHtml: '<a id = "watchDetail" href = "https://v4.bootcss.com/">查看详情</a>'
+    })
+  }
+
 });
+
+let num = 0;
+function showPic() {
+  let children = $('.show-pic').children()
+  num %= children.length
+  let last = ( num - 1 ) % children.length
+  last === -1 && (last = children.length - 1) 
+  // console.log(last)
+  children.eq(last).removeClass('active-pic')
+  children.eq(num).addClass('active-pic')
+  
+
+  num++
+  setTimeout(showPic, 3500)
+}
+
+
+setTimeout(showPic, 3500)
 
