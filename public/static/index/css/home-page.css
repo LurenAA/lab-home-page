@@ -23,9 +23,28 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+@keyframes fadeIn {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
 @media only screen and (max-width: 761px) {
   .ab-title > h1 {
     font-size: 25px;
+  }
+
+  .info-content > h2 > a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .info-header {
+    margin-top: 50px !important;
   }
 
   .ab-title > h2 {
@@ -36,7 +55,7 @@
     max-width: 100% !important;
   }
 
-  .about-us {
+  .about-us, .areas {
     padding: 0 20px 0 !important;
   }
 }
@@ -64,13 +83,13 @@
   right: 0;
 }
 
-.about-us {
-  padding: 0 100px 0px;
+.about-us, .areas {
+  padding: 0 100px 20px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.us-title {
+.us-title, .areas-title {
   width: 100%;
   max-height: 100px;
   text-align: center;
@@ -80,7 +99,7 @@
   color: #064f9e;
   margin: 60px 0 44px;
 }
-.us-title::after {
+.us-title::after, .areas-title::after {
   content: '';
   display: block;
   position: relative;
@@ -91,6 +110,7 @@
 }
 
 .us-info {
+  visibility: hidden;
   flex: 0 0 50%;
   max-width: 50%;
   padding: 0 20px;
@@ -248,4 +268,82 @@
 
 .active-pic {
   opacity: 1;
+}
+
+.info-header {
+  margin-top: 10px;
+  border-top: 3px solid #999999;
+  flex: 0 0 100%;
+  overflow: hidden;
+}
+.info-header > h1 {
+  display: block;
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666666;
+  margin-top: 10px;
+}
+.info-header > a {
+  display: block;
+  float: right;
+  margin-top: 8px;
+}
+
+.info-content {
+  margin-top: 33px;
+  overflow: hidden;
+}
+.info-content > h2 {
+  font-size: 12px;
+  font-weight: normal;
+}
+.info-content > h2:hover > a, .info-content > h2:hover > span {
+  color: #064f9e !important;
+  background-position: 0 100%;
+}
+.info-content > h2 > span {
+  font-size: 14px;
+  color: #8d8d8d;
+  padding-left: 20px;
+  background: url(../asset/info_news_time.png) no-repeat;
+  background-position: 0 0;
+  height: 16px;
+  display: inline-block;
+  transition: background-position .5s linear;
+}
+.info-content > h2 > a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #222222;
+  display: inline-block;
+  line-height: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.info-content > p {
+  font-size: 14px;
+  color: #111111;
+  line-height: 28px;
+  margin-top: 10px;
+}
+
+.show-info-ani-0 {
+  visibility: visible !important;
+  animation: fadeIn 1s;
+}
+
+.show-info-ani-1 {
+  visibility: visible !important;
+  animation: fadeIn 0.6s;
+}
+
+.areas {
+  background-color: #064f9e;
+  height: 1000px;
+}
+
+.areas-title {
+  color: #fff;
 }

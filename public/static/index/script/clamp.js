@@ -48,7 +48,7 @@
           return fontWidth[reg]
         }
       }
-      console.log(letter)
+      // console.log(letter)
       if(spaceFlag) {
         return 0
       } else {

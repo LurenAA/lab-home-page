@@ -71,13 +71,31 @@
       </div>
     </article>
     <article class = 'us-info'>
-      <p>这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍
-        这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍
-        这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍
-        这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍这里是实验室介绍
-      </p>
+      <header class = 'info-header'>
+        <h1>新闻</h1>
+        <a href = "index.html">更多</a>
+      </header>
+      {foreach $show_news as $key=>$vo}
+        <div class = 'info-content'>
+          <h2>
+            <a href = "{$vo.href}">{$vo.title}</a>
+            <span>{$vo.date}</span>
+          </h2>
+          <p>{$vo.des}</p>
+        </div>
+      {/foreach}
+      <i class = 'flex-util'>.</i>
     </article>
   </section>
+  <div class = 'areas'>
+    <h1 class = 'areas-title'>科研方向</h1>
+  </div>
+  <div class = 'team'>
+
+  </div>
+  <div class = 'achieve'>
+
+  </div>
 {/block}
 
 {block name="footer"}

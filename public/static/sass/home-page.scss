@@ -1,7 +1,26 @@
 @import './util';
+
+@keyframes fadeIn{
+  from{
+    transform: translate3d(0, 100%, 0);
+  }
+  to{
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @media only screen and (max-width: 761px) { 
   .ab-title > h1{
     font-size: 25px;
+  }
+
+  .info-content > h2 > a {
+    @include single-elipsis;
+    max-width: 100%;
+  }
+
+  .info-header{
+    margin-top: 50px !important;
   }
 
   .ab-title > h2 {
@@ -45,7 +64,7 @@
 }
 
 .about-us{
-  padding: 0 100px 0px;
+  padding: 0 100px 20px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -72,6 +91,7 @@
 }
 
 .us-info{
+  visibility: hidden;
   flex: 0 0 50%;
   max-width: 50%;
   padding: 0 20px;
@@ -122,4 +142,95 @@
 
 .active-pic{
   opacity: 1;
+}
+
+.info-header{
+  margin-top: 10px;
+  border-top: 3px solid #999999;
+  flex: 0 0 100%;
+  overflow: hidden;
+
+  > h1 {
+    display: block;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    color: #666666;
+    margin-top: 10px;
+  }
+
+  >a {
+    display: block;
+    float: right;
+    margin-top: 8px;
+  }
+}
+
+.info-content{
+  margin-top: 33px;
+  overflow:hidden;
+
+  > h2 {
+    font-size: 12px;
+    font-weight: normal;
+    
+    &:hover{
+      & > a ,
+      & > span{
+        color:$title-color !important;
+        background-position: 0 100%;
+      }
+    }
+
+    >span {
+      font-size: 14px;
+      color: #8d8d8d;
+      padding-left: 20px;
+      background: url(../asset/info_news_time.png) no-repeat;
+      background-position: 0 0;
+      height: 16px;
+      display: inline-block;
+      transition: background-position .5s linear;
+    }
+
+    > a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #222222;
+      display: inline-block;
+      line-height: 25px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  }
+}
+
+.info-content > p{
+  font-size: 14px;
+  color: #111111;
+  line-height: 28px;
+  margin-top: 10px;
+}
+
+@for $i from 0 through 1 {
+  .show-info-ani-#{$i}{
+    visibility: visible !important;
+    @if $i == 0 {
+      animation: fadeIn 1s;
+    }
+    @else{
+      animation: fadeIn 0.6s;
+    }
+  }
+}
+
+.areas{
+  @extend .about-us;
+  background-color: $title-color;
+  height: 1000px;
+}
+
+.areas-title{
+  @extend .us-title;
+  color: #fff;
 }
