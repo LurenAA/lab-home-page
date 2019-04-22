@@ -182,10 +182,27 @@
 /* 全局样式 */
 html,
 body{
-  width: 100%;
-  height: 100%;
+  /* overflow:hidden;
+  overflow-y:auto; */
   -webkit-user-select: none;
   user-select: none;
 }
 
+html {
+  overflow-y: scroll;
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+  overflow: hidden;
+}
 
