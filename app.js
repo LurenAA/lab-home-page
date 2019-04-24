@@ -7,6 +7,15 @@ const views = require('koa-views')
 const path = require('path')
 
 const app = new Koa()
+
+app.use(async function (ctx,next) {
+  try{
+    await next()
+  } catch(err) {
+    await ctx.render('error',{status: ctx.status, message: err.message}) 
+  }
+})
+
 onerror(app);
 app.use(logger())
 
@@ -26,6 +35,10 @@ app.use(views(__dirname + '/view', {
           return true
         }
         return false
+      },
+      item: function(items, num){
+        let arr = items.toString().split('')
+        return arr[num]
       }
     },
     partials: {
@@ -43,8 +56,12 @@ app.use(async (ctx, next) => {
 app.use(indexRouter.routes())
   .use(indexRouter.allowedMethods())
 
-app.on('error', function(err, ctx) {
-  console.log(err);
+app.use(function (ctx,next) {
+  ctx.throw(404)
+})
+
+app.on('error',async function(err,ctx) {
+  console.error(err.status)
 })
 
 http.createServer(app.callback()).listen(3000)
