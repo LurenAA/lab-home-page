@@ -1,0 +1,42 @@
+$title-color: #064f9e;
+$background-color: #b7b7b7;
+
+$normal-font-size: 16px;
+
+@mixin justify-par{
+  text-align: justify;
+  text-align-last: left;
+}
+
+@mixin single-elipsis{
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+%base-wekit-clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient:vertical; 
+  display: -webkit-box;
+}
+
+
+%base-control {
+  position: absolute;
+  top: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 15%;
+  color: #fff;
+  text-align: center;
+  opacity: .5;  
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
