@@ -12,7 +12,7 @@ app.use(async function (ctx,next) {
   try{
     await next()
   } catch(err) {
-    await ctx.render('error',{status: ctx.status, message: err.message}) 
+    await ctx.render('error',{status: err.status, message: err.message}) 
   }
 })
 
