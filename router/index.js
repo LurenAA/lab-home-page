@@ -1,4 +1,5 @@
-const router = require('koa-router')()
+const router = require('../module/koa-router/router')()
+// const router = require('koa-router')()
 
 router.get('/',async function (ctx, next)  {
   let [news, pics, focus] = await Promise.all([

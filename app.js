@@ -8,14 +8,6 @@ const path = require('path')
 
 const app = new Koa()
 
-app.use(async function (ctx,next) {
-  try{
-    await next()
-  } catch(err) {
-    await ctx.render('error',{status: err.status, message: err.message}) 
-  }
-})
-
 onerror(app);
 app.use(logger())
 
@@ -48,17 +40,22 @@ app.use(views(__dirname + '/view', {
   }
 }));
 
-app.use(async (ctx, next) => {
+app.use(async function(ctx, next)  {
   ctx.pool = require('./assets/script/util/mysql.js')
   await next()
 })
 
 app.use(indexRouter.routes())
-  .use(indexRouter.allowedMethods())
 
-app.use(function (ctx,next) {
-  ctx.throw(404)
-})
+// app.use(async function (ctx, next){
+//   await indexRouter.routes()(ctx, next)
+// })
+
+  // .use(indexRouter.allowedMethods())
+
+// app.use(function (ctx,next) {
+//   ctx.throw(404)
+// })
 
 app.on('error',async function(err,ctx) {
   console.error(err.status)
