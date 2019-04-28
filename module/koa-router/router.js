@@ -25,7 +25,6 @@ Router.prototype.routes = function () {
   return function dispatch (ctx, next) {
     let matched = router.match(ctx.method, ctx.path) || []
      
-
     let  middleware = matched.reduce(function (total, element) {
       return total.concat(element.middleware)
     }, [])

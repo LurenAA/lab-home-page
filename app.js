@@ -1,10 +1,10 @@
 const Koa = require('koa')
 const http = require('http')
-const serveStatic = require('koa-static')
 const logger = require('koa-logger')
 const onerror = require('koa-onerror')
 const views = require('koa-views')
 const path = require('path')
+const serveStatic = require(path.resolve(__dirname, 'module/koa-static/index'))
 
 const app = new Koa()
 
@@ -14,6 +14,17 @@ app.use(logger())
 app.use(serveStatic(path.join(__dirname,'assets')))
 
 const indexRouter = require('./router/index')
+
+app.use(async function (ctx, next) {
+  try {
+    await next()
+  } catch (err) {
+    await ctx.render('error', {
+      message: err.message,
+      status: err.status
+    })
+  }
+})
 
 app.use(views(__dirname + '/view', {
   extension: 'hbs',
@@ -47,15 +58,14 @@ app.use(async function(ctx, next)  {
 
 app.use(indexRouter.routes())
 
-// app.use(async function (ctx, next){
-//   await indexRouter.routes()(ctx, next)
-// })
-
   // .use(indexRouter.allowedMethods())
 
-// app.use(function (ctx,next) {
-//   ctx.throw(404)
-// })
+app.use(function (ctx,next) {
+  if(ctx.status === 200) {
+    return next()
+  }
+  ctx.throw(ctx.status)
+})
 
 app.on('error',async function(err,ctx) {
   console.error(err.status)

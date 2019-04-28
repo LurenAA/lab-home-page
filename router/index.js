@@ -1,7 +1,7 @@
 const router = require('../module/koa-router/router')()
 // const router = require('koa-router')()
 
-router.get('/',async function (ctx, next)  {
+router.get('/', async function (ctx, next)  {
   let [news, pics, focus] = await Promise.all([
     ctx.pool.better_query('SELECT * FROM lab_news LIMIT 3'),
     ctx.pool.better_query('SELECT * FROM lab_show_img'),
@@ -14,6 +14,11 @@ router.get('/',async function (ctx, next)  {
     ele.pics = JSON.parse(ele.pics)
   })
   await ctx.render('index', { title: '主页' , news: news, pics: pics, focus: focus})
+})
+
+router.get('/login', async function (ctx, next)  {
+  
+  await ctx.render('login')
 })
 
 module.exports = router

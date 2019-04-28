@@ -1,4 +1,4 @@
-require(['./config'], function() {
+require(['../lib/config'], function() {
   require(['clamp', 'bootstrap', 'util', 'scrollTo'], function() {
     const $clamp = require('clamp')
     const _ = require('util')
@@ -38,6 +38,10 @@ require(['./config'], function() {
             }
           })
         })
+    })
+
+    $('#loginIcon').click(function () {
+      self.location.href="/login"
     })
 
     $(document).ready(function() {
