@@ -4,14 +4,18 @@ const logger = require('koa-logger')
 const onerror = require('koa-onerror')
 const views = require('koa-views')
 const path = require('path')
-const serveStatic = require(path.resolve(__dirname, 'module/koa-static/index'))
+
+// const serveStatic = require('koa-static')
+const serveStatic = require('./module/koa-static2/index')
 
 const app = new Koa()
 
 onerror(app);
 app.use(logger())
 
-app.use(serveStatic(path.join(__dirname,'assets')))
+app.use(serveStatic(path.join(__dirname,'assets'), {
+  maxage: 100000
+}))
 
 const indexRouter = require('./router/index')
 
@@ -72,3 +76,4 @@ app.on('error',async function(err,ctx) {
 })
 
 http.createServer(app.callback()).listen(3000)
+
