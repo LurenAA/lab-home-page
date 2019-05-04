@@ -20,6 +20,16 @@ methods.forEach(function (verb){
   }
 })
 
+Router.prototype.all = function (path, middleware) {
+  let _this = this
+  let middlewareArray = Array.prototype.slice.call(arguments, 1)
+  methods.forEach(function (verb) {
+    let newOne = new Layer(path, middlewareArray, verb)
+    
+    _this.stack.push(newOne)
+  })
+}
+
 Router.prototype.routes = function () {
   let router = this
   return async function dispatch (ctx, next) {

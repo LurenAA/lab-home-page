@@ -1,4 +1,5 @@
 const router = require('../module/koa-router/router')()
+const koaBody = require('koa-body');
 // const router = require('koa-router')()
 
 router.get('/', async function (ctx, next)  {
@@ -16,8 +17,13 @@ router.get('/', async function (ctx, next)  {
   await ctx.render('index', { title: '主页' , news: news, pics: pics, focus: focus})
 })
 
-router.get('/login', async function (ctx, next)  {
-  
+router.all('/login', async function (ctx, next)  {
+  await ctx.render('login')
+})
+
+router.post('/loginback', koaBody(), async function (ctx, next) {
+  console.log(ctx.request.body);
+  ctx.set("Set-Cookie","id=123")
   await ctx.render('login')
 })
 

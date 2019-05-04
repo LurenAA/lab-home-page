@@ -14,7 +14,7 @@ onerror(app);
 app.use(logger())
 
 app.use(serveStatic(path.join(__dirname,'assets'), {
-  maxage: 100000
+  maxage: 1000 * 1000
 }))
 
 const indexRouter = require('./router/index')

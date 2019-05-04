@@ -8,9 +8,9 @@ const {
   parse,
   sep
 } = require('path')
-const {
-  createReadStream
-} = require('fs')
+// const {
+//   createReadStream
+// } = require('fs')
 
 
 module.exports = function (path, options) {
@@ -61,6 +61,6 @@ module.exports = function (path, options) {
     }
     ctx.type = parse(thePath).ext
     ctx.set('Cache-Control', directives.join(','))
-    ctx.body = createReadStream(thePath)
+    ctx.body = fs.createReadStream(thePath)
   }
 }

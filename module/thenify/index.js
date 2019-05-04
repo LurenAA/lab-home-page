@@ -1,4 +1,7 @@
 module.exports = function thenify(fn) {
+  if(!fn.toString().includes('callback')) {
+    return fn
+  }
   return function () {
     let theArguments = arguments;
     return new Promise(function (resolve, reject) {
