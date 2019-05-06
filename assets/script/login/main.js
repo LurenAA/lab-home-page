@@ -14,8 +14,11 @@ require(['../lib/config'], function () {
     $('input').blur(function (e) {
       if($(this).val().length <= 0) {
         $(this).siblings('label').removeClass('actived')
-      }
-      
+      }  
+    })
+
+    $(document).ready(function () {
+      $('.form-group > input').val('')
     })
   })
 })
