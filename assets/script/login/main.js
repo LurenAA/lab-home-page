@@ -10,8 +10,7 @@ require(['../lib/config'], function () {
     $('input').focus(function () {
       $(this).siblings('label').addClass('actived');
     })
-
-    $('input').blur(function (e) {
+    .blur(function (e) {
       if($(this).val().length <= 0) {
         $(this).siblings('label').removeClass('actived')
       }  
@@ -20,5 +19,28 @@ require(['../lib/config'], function () {
     $(document).ready(function () {
       $('.form-group > input').val('')
     })
+
+    // $('.CTA>input').click(function () {
+    //   $.ajax(
+    //     {
+    //       method: 'POST',
+    //       url: '/login',
+    //       dataType: "text",
+    //       data: {
+    //         account: $('#loginemail').val(),
+    //         password: $('#loginPassword').val()
+    //       },
+    //       success: function (result) {
+    //         console.log(result);
+    //         if (result.resultCode == 200) {
+    //             alert("SUCCESS");
+    //         }
+    //       },
+    //       error : function() {
+    //         alert("异常！");
+    //       }
+    //     }
+    //   )
+    // })
   })
 })

@@ -5,9 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" type="image/png" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/backend.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/iconfont.css">
   <title>管理</title>
 </head>
 <body>
-  
+  <header class = 'nav-header'>
+    <div id = 'iconTitle'>
+      <img src = '/img/logo.png'>
+      <h1>实验室名称</h1>
+    </div>
+    <div style = 'flex: 1;'></div>
+    <nav class = 'nav-top'>
+      <i class = 'iconfont iconjingzhong'></i>
+      <i class = 'iconfont iconicon--'></i>
+      <div id = 'loginStatus'>
+        <img id = 'portrait'>
+        <span>{{ username }}</span>
+        <a class = 'iconfont iconxiajiantou'></a>
+      </div>
+    </nav>
+  </header>
+
+  <script data-main="script/backend/main.js" src="script/lib/require.js"></script>
 </body>
 </html>

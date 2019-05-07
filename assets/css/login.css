@@ -102,7 +102,8 @@ body {
     border-radius: 30px;
     margin-right: 20px;
     border: none;
-    cursor: pointer; }
+    cursor: pointer;
+    outline: none; }
   .CTA a {
     font-size: 13px;
     color: #444; }
@@ -129,3 +130,11 @@ body {
       font-weight: 800; }
     .return > a:hover, .return > a:hover::after {
       color: #f95959; }
+
+#error-log-tip {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 12px;
+  color: #f95959;
+  letter-spacing: 1px; }
