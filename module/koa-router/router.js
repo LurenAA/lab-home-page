@@ -1,56 +1,60 @@
-const methods = require('./methods')
-const Layer = require('./layer')
-const compose = require('./compose')
+const http = require('http')
+const Layer = require('./layer.js')
+const compose = require('./compose.js')
 
-function Router() {
+const methods = http.METHODS.map(value => value.toLowerCase())
+
+function Router(options) {
   if(!(this instanceof Router)) {
-    return new Router()
+    return new Router(options)
   }
-  
   this.stack = []
 }
 
-methods.forEach(function (verb){
-  Router.prototype[verb] = function (path, middleware) {
-    let middlewareArray = Array.prototype.slice.call(arguments, 1)
+methods.forEach(function (method) {
+  Router.prototype[method] = function (path, ...middleware) {
+    let target 
+    if(target = this.stack.find(checkIndex)) {
+      target.add(method, middleware)
+    } else {
+      let newLayer = new Layer(method, path, middleware)
+      this.stack.push(newLayer)
+    }
 
-    let newOne = new Layer(path, middlewareArray, verb)
-    
-    this.stack.push(newOne)
+    function checkIndex(item){
+      return item.path ===  path
+    }
   }
 })
 
-Router.prototype.all = function (path, middleware) {
-  let _this = this
-  let middlewareArray = Array.prototype.slice.call(arguments, 1)
-  methods.forEach(function (verb) {
-    let newOne = new Layer(path, middlewareArray, verb)
-    
-    _this.stack.push(newOne)
+Router.prototype.all = function (path, ...middleware) {
+  methods.forEach(ele => {
+    this[ele](path, ...middleware)
   })
 }
 
 Router.prototype.routes = function () {
-  let router = this
-  return async function dispatch (ctx, next) {
-    let matched = router.match(ctx.method, ctx.path) || []
-     
-    let  middleware = matched.reduce(function (total, element) {
-      return total.concat(element.middleware)
-    }, [])
+  let _this = this
+  return function (ctx, next) {
+    let middlewareList = _this.match(ctx.path, ctx.method)
 
-    await compose(middleware)(ctx, next)
+    if(!middlewareList.length) {
+      return next()
+    }
+    let returnFunc = compose(middlewareList)
+    return returnFunc(ctx, next)
   }
 }
 
-Router.prototype.match = function (method, path) {
-  let matched = []
-  this.stack.forEach(function (element) {
-    if(element.regExp.test(path) && ~element.methods.indexOf(method.toLowerCase())){
-      matched.push(element)
+Router.prototype.match = function (path, method) {
+  method = method.toLowerCase()
+  let matchList = []
+  this.stack.forEach(layer => {
+    if(layer.methods.includes(method) && layer.reg.test(path)) {
+      matchList.push(...layer.middlewares[method])
     }
   })
-  return matched;
+  return matchList
 }
 
 module.exports = Router

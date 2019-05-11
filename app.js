@@ -5,16 +5,19 @@ const onerror = require('koa-onerror')
 const views = require('koa-views')
 const path = require('path')
 
-// const serveStatic = require('koa-static')
-const serveStatic = require('./module/koa-static2/index')
+const serveStatic = require('./module/koa-static/index')
+const session = require('./module/koa-session/index')
 
 const app = new Koa()
 
+app.use(session({
+  'max-Age': 6000
+}))
 onerror(app);
 app.use(logger())
 
 app.use(serveStatic(path.join(__dirname,'assets'), {
-  maxage: 1000 * 1000
+  maxage: 1000
 }))
 
 const indexRouter = require('./router/index')
@@ -25,7 +28,7 @@ app.use(async function (ctx, next) {
   } catch (err) {
     await ctx.render('error', {
       message: err.message,
-      status: err.status
+      status: err.status || 500
     })
   }
 })
@@ -62,8 +65,6 @@ app.use(async function(ctx, next)  {
 
 app.use(indexRouter.routes())
 
-  // .use(indexRouter.allowedMethods())
-
 app.use(function (ctx,next) {
   if(ctx.status === 200) {
     return next()
@@ -75,5 +76,10 @@ app.on('error',async function(err,ctx) {
   console.error(err.status)
 })
 
-http.createServer(app.callback()).listen(3000)
+app.use(async function (ctx, next) {
+  if(ctx.status === 404) {
+    ctx.throw(404,'not found')
+  }
+})
 
+http.createServer(app.callback()).listen(3000)

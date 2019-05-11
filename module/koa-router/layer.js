@@ -1,17 +1,24 @@
-const pathToRegexp = require('path-to-regexp')
+const toReg = require('./path-to-reg')
 
-function Layer (path, middlewareArray, method) {
-  this.path = path
-  this.middleware = []
-  this.methods = []
-  this.keys = []
-  middlewareArray.forEach((mid) => {
-    if(typeof mid === 'function'){
-      this.middleware.push(mid)
+class Layer {
+  constructor (methods, path, middlewares) {
+    this.methods = methods instanceof Array ? methods : [methods]
+    this.path = path
+    this.reg = toReg(path)
+    this.middlewares = {}
+    this.methods.forEach(method => {
+      this.middlewares[method] = middlewares
+    });
+  }
+
+  add(method, middlewares) {
+    if(this.middlewares[method]) {
+      this.middlewares[method].push(...middlewares)
+    } else {
+      this.methods.push(method)
+      this.middlewares[method] = middlewares
     }
-  })
-  this.regExp = pathToRegexp(path, this.keys)
-  this.methods.push(method)
+  }
 }
 
 module.exports = Layer

@@ -1,6 +1,7 @@
 require(['../lib/config'], function () {
-  require(['jquery'], function () {
+  require(['jquery', 'md5'], function () {
     let $ = require('jquery')
+    let md5 = require('md5')
 
     $('.CTA a').click(function (e) {
       $(this).closest('.form-piece').addClass('switched').siblings('.form-piece').removeClass('switched')
@@ -20,27 +21,30 @@ require(['../lib/config'], function () {
       $('.form-group > input').val('')
     })
 
-    // $('.CTA>input').click(function () {
-    //   $.ajax(
-    //     {
-    //       method: 'POST',
-    //       url: '/login',
-    //       dataType: "text",
-    //       data: {
-    //         account: $('#loginemail').val(),
-    //         password: $('#loginPassword').val()
-    //       },
-    //       success: function (result) {
-    //         console.log(result);
-    //         if (result.resultCode == 200) {
-    //             alert("SUCCESS");
-    //         }
-    //       },
-    //       error : function() {
-    //         alert("异常！");
-    //       }
-    //     }
-    //   )
-    // })
+    $('.CTA>input').click(function () {
+      let passWordMd5 = md5($('#loginPassword').val())
+      $.ajax(
+        {
+          method: 'POST',
+          url: '/backend',
+          dataType: "text",
+          data: {
+            account: $('#loginemail').val(),
+            password: passWordMd5
+          },
+          success: function (result) {
+            result && (result = JSON.parse(result))
+            if(result.status === true) {
+              window.location.href = '/backend' 
+            } else {
+              $('#error-log-tip').css('display', 'block')
+            }
+          },
+          error : function() {
+            alert("异常！");
+          }
+        }
+      )
+    })
   })
 })

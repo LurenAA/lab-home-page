@@ -1,23 +1,28 @@
 function compose (middleware) {
-  let index = -1;
+  middleware = middleware instanceof Array ? middleware : [middleware]
+
   return function (ctx, next) {
-    return dispatch(0)
-    function dispatch(i) {
-      if (i <= index) return Promise.reject(new Error('next() called multiple times'))
-      index = i
-      let fn
-      i === middleware.length ? 
-      (fn = next) : (fn = middleware[i]);
-      if(typeof fn !== 'function') {
-        return Promise.resolve()
+    let index = 0;
+    function comFunc(n) {
+      if(n !== index) {
+        console.error('cant use next twice')
+        return 
       }
-      try {
-        return Promise.resolve(fn(ctx, dispatch.bind(null, i+ 1)))
-      } catch (err) {
+      index += 1
+      let implementFunc = middleware[n]
+      if(typeof implementFunc !== 'function') {
+        implementFunc = Promise.resolve()
+      }
+      let nextFunc = n === middleware.length - 1 ? next : comFunc.bind(null, n + 1)
+      try{
+        return Promise.resolve(implementFunc(ctx, nextFunc))
+      } catch(err) {
         return Promise.reject(err)
       }
     }
+
+    return comFunc(0)
   }
 } 
 
-module.exports = compose
+module.exports = compose 
