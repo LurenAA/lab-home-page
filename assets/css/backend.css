@@ -39,8 +39,38 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative; }
   #loginStatus > span {
     padding: 0 5px; }
   #loginStatus > a {
     margin: 0 5px; }
+
+.downbar {
+  top: 100%;
+  user-select: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  width: 150%;
+  border: 1px solid #dee2e6;
+  list-style: none;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  color: #999; }
+  .downbar #downbar-title {
+    background: #f8f9fa;
+    justify-content: center; }
+  .downbar > li {
+    font-size: 16px;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #dee2e6; }
+    .downbar > li > .iconfont {
+      margin: 0  20px; }
+
+.hid {
+  display: none !important; }

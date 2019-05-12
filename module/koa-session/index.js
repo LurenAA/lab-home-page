@@ -22,7 +22,7 @@ class Session {
   createSession (content, key, options) {
     let sessionId = uid(12)
     let finalOptions = Object.assign({}, this.options ,options)
-    content.expires = new Date(Date.now() + finalOptions.maxAge * 1000)
+    content.expires = new Date(Date.now() + finalOptions['max-Age'] * 1000)
     content = JSON.stringify(content)
 
     this.addSessionToStore(sessionId, content)
@@ -35,7 +35,10 @@ class Session {
     this.store.add(id, content)
   }
 
-  setHead(options, value) {
+  setHead(options, value, add) {
+    if(typeof add === 'object') {
+      options = Object.assign({}, options, add)
+    }
     let headOptions = ['httpOnly','expires','max-Age','Domain','path','secure', 'SameSite'],
       str = ''
     str += `${options.key}=${value};`
@@ -51,11 +54,48 @@ class Session {
     this.ctx.set('Set-Cookie', str)
   }
 
-  checkSession(cookie) {
-
-    if(!this.store.isset(cookie)) {
-
+  checkSession(cookie, options) {
+    options = Object.assign({}, this.options, options)
+    let arr = cookie.split('.'), content
+    if(!this.store.isset(arr[0])) {
+      this.setHead(options, '', {'max-Age': -1})
+      return 'redirect'
     }
+    content = JSON.parse(this.store.space[arr[0]])
+    if(Date.now() > content.expires) {
+      this.setHead(options, '', {'max-Age': -1})
+      return 'redirect'
+    }
+    let check = signature.unsign(arr[1], this.store.space[arr[0]], content.password)
+    if(check) {
+      content.expires = new Date(Date.now() + options['max-Age'] * 1000)
+      let key = content.password
+      let contentSign = JSON.stringify(content)
+      let sig = signature.sign(contentSign, key)
+      let value = arr[0] + '.' + sig
+      this.store.add(arr[0], contentSign)
+      this.setHead(this.options, value)
+      return content
+    }
+  }
+
+  deleteSession(consid) {
+    let sessionId = consid.split('.')[0]
+    this.store.delete(sessionId)
+    this.deleteCookie()
+    process.nextTick(() => {
+      this.store.refresh()
+    })
+    return true
+  }
+
+  deleteCookie() {
+    let str = 'consid=;max-Age=-1;'
+    this.ctx.set('Set-Cookie', str)
+  }
+
+  refresh() {
+    this.store.refresh()
   }
 }
 

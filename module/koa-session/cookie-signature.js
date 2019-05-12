@@ -8,6 +8,9 @@ function sign(val, key) {
 function unsign(compar, val, key) {
   let buf_1 = Buffer.from(compar)
   let compar2 = sign(val, key)
+  if(compar2.length !== compar.length) {
+    return false
+  }
   let buf_2 = Buffer.from(compar2)
   return crypto.timingSafeEqual(buf_1, buf_2)
 }

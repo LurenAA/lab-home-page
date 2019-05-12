@@ -20,6 +20,13 @@ router.get('/', async function (ctx, next) {
 router.get('/login', cookieParser, async function (ctx, next) {
   ctx.set('Cache-Control', 'no-store')
   
+  if(ctx.querystring.includes('deleteCookie')) {
+    if(ctx.session.deleteSession(ctx.cookieResult.consid)) {
+      ctx.body = true
+      return 
+    }
+  }
+
   if (ctx.cookieResult.consid) {
     return ctx.redirect('/backend')
   }
@@ -28,6 +35,10 @@ router.get('/login', cookieParser, async function (ctx, next) {
 
 router.all('/backend', koaBody() , cookieParser, async function (ctx, next) {
   ctx.set('Cache-Control', 'no-store')
+  setImmediate(() => {
+    ctx.session.refresh()
+  })
+
   if (Object.keys(ctx.request.body).length &&
     ctx.method === 'POST') {
     let key
@@ -52,6 +63,13 @@ router.all('/backend', koaBody() , cookieParser, async function (ctx, next) {
     }
   } else if (ctx.cookieResult.consid) {
     let result = ctx.session.checkSession(ctx.cookieResult.consid)
+    if(result === 'redirect') {
+      return await ctx.redirect('/login')
+    } else {
+      return await ctx.render('backend', {
+        username: result.username
+      })
+    }
   } else {
     return ctx.redirect('/login')
   }
