@@ -1,11 +1,11 @@
 require(['../lib/config'], function() {
-  require(['clamp', 'bootstrap', 'util', 'scrollTo'], function() {
+  require(['clamp', 'util', 'bootstrap',  'scrollTo'], function() {
     const $clamp = require('clamp')
     const _ = require('util')
 
-    window.num = 0;
-    window.offsetLeft = []
-    window.index
+    $('.carousel').carousel()
+    window.offsetLeft = [];
+    window.index; 
 
     $(window).on('resize', function(e) {
       _.changeSliderBar()
@@ -24,7 +24,7 @@ require(['../lib/config'], function() {
     $(window).on('scroll', _.changeMoveLine)
 
     $('.row-div>nav').children().each(function(i) {
-      $(this).hover(_.onHover.bind(this, i), _.offHover.bind(this, i))
+      $(this).hover(_.onHover.bind(_, i), _.offHover.bind(_, i))
         .click(function() {
           $.scrollTo({
             y: offsetLeft[i].cont - $('.header-class').height() + 1

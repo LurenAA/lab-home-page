@@ -97,3 +97,61 @@
 .hid {
   display: none !important;
 }
+
+.main-part{
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.side-bar{
+  height: 100%;
+  width: 240px;
+  background-color: #272727;
+  user-select: none;
+  margin:0;
+
+  > h1{
+    margin: 0;
+    font-size: 19px;
+    padding: .8rem 1rem;
+    color: #777;
+  }
+
+  > ul {
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+
+  & li {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 16px 12px;
+    color: #9d9d9d;
+    display: flex;
+  }
+
+  & li:hover{
+    color: #fff;
+  }
+
+  & span {
+    text-align: left;
+    flex: 1;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  & i {
+    margin: 0 10px;
+    vertical-align: middle;
+  }
+}
+

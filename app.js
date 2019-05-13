@@ -1,10 +1,8 @@
 const Koa = require('koa')
 const http = require('http')
 const logger = require('koa-logger')
-const onerror = require('koa-onerror')
 const views = require('koa-views')
 const path = require('path')
-
 const serveStatic = require('./module/koa-static/index')
 const session = require('./module/koa-session/index')
 
@@ -13,7 +11,7 @@ const app = new Koa()
 app.use(session({
   'max-Age': 6000
 }))
-onerror(app);
+
 app.use(logger())
 
 app.use(serveStatic(path.join(__dirname,'assets'), {
@@ -73,7 +71,7 @@ app.use(function (ctx,next) {
 })
 
 app.on('error',async function(err,ctx) {
-  console.error(err.status)
+  console.error(err.stack)
 })
 
 app.use(async function (ctx, next) {

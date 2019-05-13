@@ -7,7 +7,8 @@ router.get('/', async function (ctx, next) {
     ctx.pool.better_query('SELECT * FROM lab_news LIMIT 3'),
     ctx.pool.better_query('SELECT * FROM lab_show_img'),
     ctx.pool.better_query('SELECT * FROM lab_focus')
-  ]).catch(err => {
+  ])
+  .catch(err => {
     console.log('database query error')
     ctx.throw(500, 'database query error')
   })
@@ -28,6 +29,7 @@ router.get('/login', cookieParser, async function (ctx, next) {
   }
 
   if (ctx.cookieResult.consid) {
+    ctx.status = 302
     return ctx.redirect('/backend')
   }
   return await ctx.render('login')
@@ -64,6 +66,7 @@ router.all('/backend', koaBody() , cookieParser, async function (ctx, next) {
   } else if (ctx.cookieResult.consid) {
     let result = ctx.session.checkSession(ctx.cookieResult.consid)
     if(result === 'redirect') {
+      ctx.status = 302
       return await ctx.redirect('/login')
     } else {
       return await ctx.render('backend', {
@@ -71,6 +74,7 @@ router.all('/backend', koaBody() , cookieParser, async function (ctx, next) {
       })
     }
   } else {
+    ctx.status = 302
     return ctx.redirect('/login')
   }
 })

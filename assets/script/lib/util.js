@@ -1,19 +1,22 @@
 define(function (require, exports, module) {
   let $ = require('jquery')
 
-  function showPic() {
-    let children = $('.show-pic').children()
-    num %= children.length
-    let last = (num - 1) % children.length
-    last === -1 && (last = children.length - 1)
-    // console.log(last)
-    children.eq(last).removeClass('active-pic')
-    children.eq(num).addClass('active-pic')
-
-
-    num++
-    setTimeout(showPic, 3500)
-  }
+  let showPic = (function () { 
+    let num = 0;
+    return function () {
+      let children = $('.show-pic').children()
+      num %= children.length
+      let last = (num - 1) % children.length
+      last === -1 && (last = children.length - 1)
+      // console.log(last)
+      children.eq(last).removeClass('active-pic')
+      children.eq(num).addClass('active-pic')
+  
+      num++
+      setTimeout(showPic, 3500)
+    }
+  })()
+  
 
   function showUsInfo() {
     if ($(".us-info").offset().top - $(window).scrollTop() < window.innerHeight) {
@@ -30,6 +33,9 @@ define(function (require, exports, module) {
   }
 
   function setLinePos(offsetLeft, i, w) {
+    if(i < 0) {
+      return $('#moveLine').width(0)
+    }
     if (w === undefined) {
       $('#moveLine').width(offsetLeft[i].width)
     } else {

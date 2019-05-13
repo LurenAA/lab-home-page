@@ -3,11 +3,10 @@ requirejs.config({
   paths: {
     jquery: 'jquery-3.3.1.slim.min',
     bootstrap: 'bootstrap.min',
-    popper: 'popper.min',
-    md5: 'md5'
+    popper: 'popper.min'
   },
   shim: {
-    bootstrap: {
+    'bootstrap': {
       deps: ['jquery', 'popper']
     }
   },
