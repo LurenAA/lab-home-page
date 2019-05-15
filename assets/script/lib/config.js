@@ -3,7 +3,8 @@ requirejs.config({
   paths: {
     jquery: 'jquery-3.3.1.slim.min',
     bootstrap: 'bootstrap.min',
-    popper: 'popper.min'
+    popper: 'popper.min',
+    chart: 'chart'
   },
   shim: {
     'bootstrap': {

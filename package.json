@@ -11,6 +11,7 @@
     "js-md5": "^0.7.3",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
+    "koa-compress": "^3.0.0",
     "koa-logger": "^3.2.0",
     "koa-onerror": "^4.1.0",
     "koa-router": "^7.4.0",

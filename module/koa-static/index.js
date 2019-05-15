@@ -53,7 +53,7 @@ module.exports = function (path, options) {
       return await next()
     }
     
-    ctx.set('Content-Length', stat.size)
+    // ctx.set('Content-Length', stat.size)
     ctx.set('Last-Modified', stat.mtime.toUTCString())
     let directives = ['max-age=' + (maxage | 0)]
     if (options.immutable) {

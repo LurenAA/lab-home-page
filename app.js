@@ -5,8 +5,11 @@ const views = require('koa-views')
 const path = require('path')
 const serveStatic = require('./module/koa-static/index')
 const session = require('./module/koa-session/index')
+const compress = require('koa-compress')
 
 const app = new Koa()
+
+app.use(compress());
 
 app.use(session({
   'max-Age': 6000
@@ -22,6 +25,7 @@ const indexRouter = require('./router/index')
 
 app.use(async function (ctx, next) {
   try {
+    ctx.compress = true
     await next()
   } catch (err) {
     await ctx.render('error', {

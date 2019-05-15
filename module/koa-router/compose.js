@@ -11,7 +11,7 @@ function compose (middleware) {
       index += 1
       let implementFunc = middleware[n]
       if(typeof implementFunc !== 'function') {
-        implementFunc = Promise.resolve()
+        return Promise.resolve()
       }
       let nextFunc = n === middleware.length - 1 ? next : comFunc.bind(null, n + 1)
       try{

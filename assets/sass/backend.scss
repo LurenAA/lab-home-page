@@ -19,6 +19,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   > h1{
     padding-left: 10px;
@@ -104,6 +105,12 @@
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+}
+
+.main-iframes{
+  flex: 1;
+  height: 100%;
 }
 
 .side-bar{
@@ -153,5 +160,9 @@
     margin: 0 10px;
     vertical-align: middle;
   }
+}
+
+.activePage{
+  color: #fff !important;
 }
 
