@@ -1,0 +1,89 @@
+$back_ground_color: #0F6DB4;
+$thead_ground_color: #032F4F;
+$odd_row_color: #F4F4F4;
+
+.container-wrapper{
+  margin: 0 auto;
+}
+
+.content-table{
+  width: 100%;
+  border-collapse:collapse; 
+  line-height: 2.4;
+ 
+  & td{    
+    font-weight: normal;
+    text-align: center;
+   }
+
+   & th {
+     @extend td;
+    user-select: none;
+    cursor: pointer;
+   }
+  
+  & th:hover{
+    background: $back_ground_color;
+  }
+}
+
+.backboard{
+  height: 44px;
+  background: $back_ground_color;
+  line-height: 44px;
+
+  > .iconjiantouzuo{
+    padding-left: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    position: relative;
+    top: 3px;
+  }
+
+  > h1 {
+    height: 40px;
+    font-size: 20px;
+    font-weight: normal; 
+    margin: 0;
+    color: #fff;
+    display: inline-block;
+  }
+}
+
+thead{
+  background: $thead_ground_color;
+  color: #fff;
+}
+
+tbody {
+  & tr:nth-child(odd) {
+    background: $odd_row_color;
+  }
+  
+  & tr:hover td:not(:first-child){
+    background: rgba(146,144,144,.3);
+  }
+
+  & td input{
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+  }
+}
+
+.tool-bars{
+  display: flex;
+  align-items: center;
+  height: 64px;
+  line-height: 64px;
+  background: #F4F4F4;
+
+   button{
+    margin-left: 10px;
+  }
+}
+
+#toolPlaceHolder{
+  flex: 1;
+}
