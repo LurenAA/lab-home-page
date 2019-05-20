@@ -43,12 +43,12 @@ app.use(views(__dirname + '/view', {
   options: {
     helpers: {
       isActive: function (e) {
-        if(e === 0) {
+        if (e === 0) {
           return true
         }
         return false
       },
-      item: function(items, num){
+      item: function (items, num) {
         let arr = items.toString().split('')
         return arr[num]
       }
@@ -60,15 +60,15 @@ app.use(views(__dirname + '/view', {
   }
 }));
 
-app.use(async function(ctx, next)  {
+app.use(async function (ctx, next) {
   ctx.pool = require('./assets/script/util/mysql.js')
   await next()
 })
 
 app.use(indexRouter.routes())
 
-app.use(function (ctx,next) {
-  if(ctx.status === 200) {
+app.use(function (ctx, next) {
+  if (ctx.status === 200) {
     return next()
   }
   ctx.throw(ctx.status)

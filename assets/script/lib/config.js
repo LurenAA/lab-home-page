@@ -4,7 +4,8 @@ requirejs.config({
     jquery: 'jquery-3.3.1.slim.min',
     bootstrap: 'bootstrap.min',
     popper: 'popper.min',
-    chart: 'chart'
+    chart: 'chart',
+    md5: 'md5'
   },
   shim: {
     'bootstrap': {

@@ -68,7 +68,7 @@
   .us-info {
     max-width: 100% !important;
   }
-  .us-title, .areas-title {
+  .us-title, .areas-title, .team .teams-title, .achieve .achieve-title {
     margin: 30px 0 30px !important;
   }
   .about-us, .areas {
@@ -126,7 +126,7 @@
       flex-wrap: wrap;
 }
 
-.us-title, .areas-title {
+.us-title, .areas-title, .team .teams-title, .achieve .achieve-title {
   width: 100%;
   max-height: 100px;
   text-align: center;
@@ -137,7 +137,7 @@
   margin: 120px 0 124px;
 }
 
-.us-title::after, .areas-title::after {
+.us-title::after, .areas-title::after, .team .teams-title::after, .achieve .achieve-title::after {
   content: '';
   display: block;
   position: relative;
@@ -543,14 +543,158 @@
 }
 
 .team {
-  height: 300px;
+  background-color: #fff;
+  margin: 60px 0 0 0;
+}
+
+.team .teams-member {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.team .teams-member .teams-member-one {
+  width: 20%;
+}
+
+.team .teams-member .teams-member-one a {
+  text-decoration: none;
+}
+
+.team .teams-member .teams-member-one a:hover {
+  cursor: pointer;
+}
+
+.team .teams-member .teams-member-one .member-left {
+  margin: 15%;
+  text-align: center;
+}
+
+.team .teams-member .teams-member-one .member-left .introduce {
+  font-size: 100%;
+  color: black;
+}
+
+.team .teams-member .teams-member-one .member-left .img-header {
+  position: relative;
   width: 100%;
-  background-color: #8d8d8d;
+  height: 0;
+  padding-top: 100%;
+}
+
+.team .teams-member .teams-member-one .member-left .img-header .img-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .achieve {
-  height: 1000px;
+  background-color: #ced4da;
+  padding: .1px 0 0 0;
+}
+
+.achieve .list-group-item {
+  color: #111111;
+}
+
+.achieve .list-group-item:hover {
+  background-color: #ced4da;
+}
+
+.area-footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 100px;
+  color: whitesmoke;
+  text-align: center;
+  background-color: #2a2730;
+}
+
+.area-footer a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.area-footer a #footer-icon:hover {
+  opacity: 1;
+}
+
+.area-footer a #footer-icon {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  opacity: 0.5;
+  -webkit-animation: footer-icon .25s ease-in-out alternate infinite;
+  animation: footer-icon .25s ease-in-out alternate infinite;
+  -webkit-transition: opacity .2s ease-in-out, transform .5s ease-in-out .2s;
+  -webkit-transition: opacity .2s ease-in-out, -webkit-transform .5s ease-in-out .2s;
+  transition: opacity .2s ease-in-out, -webkit-transform .5s ease-in-out .2s;
+  transition: opacity .2s ease-in-out, transform .5s ease-in-out .2s;
+  transition: opacity .2s ease-in-out, transform .5s ease-in-out .2s, -webkit-transform .5s ease-in-out .2s;
+}
+
+@-webkit-keyframes footer-icon {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 5px;
+  }
+}
+
+@keyframes footer-icon {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 5px;
+  }
+}
+
+.member-page {
+  display: none;
+}
+
+.member-page .member-detail {
+  width: 640px;
+  height: 540px;
+  background: #fff;
+  z-index: 201;
+  top: 20%;
+  left: 28%;
+  position: fixed;
+  opacity: 10;
+}
+
+.member-page .member-detail .close-member {
+  float: right;
+  font-size: 30px;
+}
+
+.member-page .member-detail .member-detail-img .img-detail {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  float: left;
+  margin: 25px;
+}
+
+.member-page .member-detail .member-detail-text {
+  margin-top: 46px;
+}
+
+.member-page .member-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: red;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
 }
 /*# sourceMappingURL=home-page.css.map */

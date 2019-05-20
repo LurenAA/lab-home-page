@@ -1,13 +1,14 @@
-require(['../lib/config'], function() {
-  require(['clamp', 'util', 'bootstrap',  'scrollTo'], function() {
+require(['../lib/config'], function () {
+  require(['clamp', 'bootstrap', 'util', 'scrollTo', 'member'], function () {
     const $clamp = require('clamp')
     const _ = require('util')
-
+    const member = require('member')
+    
     $('.carousel').carousel()
-    window.offsetLeft = [];
-    window.index; 
+    window.offsetLeft = []
+    window.index
 
-    $(window).on('resize', function(e) {
+    $(window).on('resize', function (e) {
       _.changeSliderBar()
       _.initMoveLine()
     })
@@ -62,6 +63,8 @@ require(['../lib/config'], function() {
         $('.info-content').eq(2).remove()
       }
 
+      member.memberDetail()
+      member.memberClose()
       _.changeSliderBar()
       _.showUsInfo()
       _.initMoveLine()

@@ -119,10 +119,54 @@
   </div>
 </div>
 <div class='team'>
-  
+  <h1 class='teams-title'>团队</h1>
+  <div class="teams-member">
+    {{#each members}}
+    <div class="teams-member-one">
+      <a class="click-member" data-point="{{this.id}}">
+        <div class="member-left">
+          <div class="img-header">
+            <img src='{{this.photo}}' class="img-shape">
+          </div>
+          <div class="introduce">
+            <p>{{this.name}} {{this.education}}</p>
+            <p>{{this.post}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
 </div>
+
 <div class='achieve'>
+  <h1 class="achieve-title">成果</h1>
+  <div class="list-group">
+    {{#each achievement}}
+    <a href="#" class="list-group-item">
+      {{this.achievement}}
+    </a>
+    {{/each}}
 
+  </div>
 </div>
+{{#each members}}
+<div class="member-page">
+  <div class='member-detail'>
 
+    <i class="iconfont close-member">&#xe938;</i>
+
+    <div class="member-detail-img">
+      <img class="img-detail" src="{{this.photo}}">
+    </div>
+    <div class="member-detail-text">
+      <p>姓名：{{this.name}}</p>
+      <p>职位：{{this.post}}</p>
+      <p>个人简介：</p>
+    </div>
+
+  </div>
+  <div class="member-overlay"></div>
+</div>
+{{/each}}
 {{> footer}}

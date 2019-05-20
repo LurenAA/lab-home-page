@@ -3,10 +3,12 @@ const koaBody = require('koa-body');
 const cookieParser = require('../module/cookie-parser/index')
 
 router.get('/', async function (ctx, next) {
-  let [news, pics, focus] = await Promise.all([
+  let [news, pics, focus, members, achievement] = await Promise.all([
     ctx.pool.better_query('SELECT * FROM lab_news LIMIT 3'),
     ctx.pool.better_query('SELECT * FROM lab_show_img'),
-    ctx.pool.better_query('SELECT * FROM lab_focus')
+    ctx.pool.better_query('SELECT * FROM lab_focus'),
+    ctx.pool.better_query('SELECT * FROM lab_members'),
+    ctx.pool.better_query('SELECT * FROM lab_achievement')
   ])
   .catch(err => {
     console.log('database query error')
@@ -15,7 +17,14 @@ router.get('/', async function (ctx, next) {
   focus.forEach(function (ele) {
     ele.pics = JSON.parse(ele.pics)
   })
-  await ctx.render('index', { title: '主页', news: news, pics: pics, focus: focus })
+  await ctx.render('index', { 
+    title: '主页', 
+    news: news, 
+    pics: pics, 
+    focus: focus,
+    members: members,
+    achievement: achievement 
+  })
 })
 
 router.get('/login', cookieParser, async function (ctx, next) {
