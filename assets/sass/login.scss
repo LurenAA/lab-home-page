@@ -1,0 +1,181 @@
+@import '_util';
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  overflow: hidden;
+  background: {
+    image: url('/img/bck.jpg');
+    repeat: no-repeat;
+    position: center;
+    size: cover;
+  }
+}
+
+.rows {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  min-width: 600px;
+}
+
+.row-item{
+  // overflow: hidden;
+  display: inline-block;
+  width: 50%;
+  height: $login-large-height;
+  position: relative;
+  max-width: 50%;
+
+  &.brand{
+    background: {
+      color: rgba(15,15,15,0.8);
+    }
+    z-index: 10;
+  }
+}
+
+.form-piece{
+  position: absolute;
+  left: -30%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 130%;
+  background-color: #fff;
+  background-origin: content-box; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.9s cubic-bezier(1, -0.575, 0.285, 0.995);
+  box-sizing: border-box;
+  padding: 30px 0;
+  overflow: hidden;
+}
+
+.signin{
+  margin: 90px 0;
+}
+
+.signup{
+  margin: 30px 0;
+}
+
+.switched{
+  transform: translate3d(-100%, 0, 0);
+  width: 100%;
+  left: 0;
+}
+
+.login-form{
+  left: 60%;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0px);
+  width: 70%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 5px;
+  color: #777777;
+
+  & label {
+    text-transform: uppercase;
+    transition: all 0.4s;
+    cursor: text;
+    display: inline-block;
+    font-size: 15px;
+    transform: translateY(40px);
+    padding-bottom: 13px;
+
+    &.actived {
+      font-size: 10px;
+      transform: translateY(10px);
+    }
+  }
+
+  & input{
+    background: none;
+    outline: none !important;
+    border: none;
+    display: block;
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    color: #222;
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    z-index: 1;
+  }
+}
+
+.CTA{
+  margin-top: 30px;
+
+  & input {
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 5px 30px;
+    background: #f95959;
+    color: #fff;
+    border-radius: 30px;
+    margin-right: 20px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  & a {
+    font-size: 13px;
+    color: #444;
+
+    &:hover{
+      color: #f95959;
+    }
+  }
+}
+
+.return{
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  line-height: 50px;
+  height: 50px;
+
+  > a {
+    text-decoration: none;
+    font-size: 50px;
+    background-color: transparent;
+  
+    &::after{
+      padding-left: 5px;
+      vertical-align: top;
+      content: '返回主页';
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #333333;
+      font-weight: 800;
+    }
+
+    &:hover , 
+    &:hover::after{
+      color: #f95959;
+    }
+  }
+}
+
+#error-log-tip{
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 12px;
+  color: #f95959;
+  letter-spacing: 1px;
+  display: none;
+}

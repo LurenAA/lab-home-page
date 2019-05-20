@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAA;EACF,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,eAAe;EACvB,UAAU,EAAE,MAAM;CAKnB;;AARD,AAKE,IALE,GAKA,CAAC,CAAC;EACF,SAAS,EAAE,IAAI;CAChB;;AAGH,AAAA,IAAI,CAAA;EACF,SAAS,EAAE,IAAI;EACf,OAAO,EAAE,KAAK;EACd,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,MAAM;CACnB",
+    "sources": [
+        "../sass/error.scss"
+    ],
+    "names": [],
+    "file": "error.css"
+}

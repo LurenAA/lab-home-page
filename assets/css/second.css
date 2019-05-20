@@ -1,0 +1,92 @@
+.container-wrapper {
+  margin: 0 auto;
+}
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 2.4;
+}
+
+.content-table td, .content-table th {
+  font-weight: normal;
+  text-align: center;
+}
+
+.content-table th {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.content-table th:hover {
+  background: #0F6DB4;
+}
+
+.backboard {
+  height: 44px;
+  background: #0F6DB4;
+  line-height: 44px;
+}
+
+.backboard > .iconjiantouzuo {
+  padding-left: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  top: 3px;
+}
+
+.backboard > h1 {
+  height: 40px;
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0;
+  color: #fff;
+  display: inline-block;
+}
+
+thead {
+  background: #032F4F;
+  color: #fff;
+}
+
+tbody tr:nth-child(odd) {
+  background: #F4F4F4;
+}
+
+tbody tr:hover td:not(:first-child), tbody tr:hover .content-table th:not(:first-child), .content-table tbody tr:hover th:not(:first-child) {
+  background: rgba(146, 144, 144, 0.3);
+}
+
+tbody td input, tbody .content-table th input, .content-table tbody th input {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+
+.tool-bars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 64px;
+  line-height: 64px;
+  background: #F4F4F4;
+}
+
+.tool-bars button {
+  margin-left: 10px;
+}
+
+#toolPlaceHolder {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+/*# sourceMappingURL=second.css.map */
