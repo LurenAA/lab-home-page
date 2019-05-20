@@ -1,0 +1,76 @@
+.nav-header {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  margin: 0;
+  z-index: 100;
+  padding: .5rem 2rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box; }
+
+#iconTitle {
+  height: 100%;
+  display: flex;
+  align-items: center; }
+  #iconTitle > h1 {
+    padding-left: 10px;
+    font-weight: 400; }
+
+.nav-top {
+  display: flex;
+  align-items: center; }
+  .nav-top > i {
+    font-size: 24px;
+    padding: 0 10px;
+    cursor: pointer; }
+
+#portrait {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin-left: 4px;
+  background: red; }
+
+#loginStatus {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  position: relative; }
+  #loginStatus > span {
+    padding: 0 5px; }
+  #loginStatus > a {
+    margin: 0 5px; }
+
+.downbar {
+  top: 100%;
+  user-select: none;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  width: 150%;
+  border: 1px solid #dee2e6;
+  list-style: none;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  color: #999; }
+  .downbar #downbar-title {
+    background: #f8f9fa;
+    justify-content: center; }
+  .downbar > li {
+    font-size: 16px;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #dee2e6; }
+    .downbar > li > .iconfont {
+      margin: 0  20px; }
+
+.hid {
+  display: none !important; }
