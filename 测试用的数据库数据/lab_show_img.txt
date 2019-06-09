@@ -1,0 +1,3 @@
+"id"	"imgName"	"imgDate"	"imgPath"
+"1"	"labScenery1"	"2019-4-18"	"http://localhost:3000/img/labScenery1.jpg"
+"2"	"labScenery2"	"2019-4-18"	"http://localhost:3000/img/labScenery2.jpg"

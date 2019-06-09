@@ -1,0 +1,8 @@
+"id"	"name"	"post"	"photo"	"education"
+"0"	"张三"	"管理员"	"http://localhost:3000/img/pic1.jpg"	"研究生"
+"1"	"李四"	"管理员"	"http://localhost:3000/img/labScenery1.jpg"	"博士"
+"2"	"王五"	"群主"	"http://localhost:3000/img/labScenery1.jpg"	"研究生"
+"3"	"刘心"	"管理员"	"http://localhost:3000/img/labScenery2.jpg"	"研究生"
+"4"	"六溜溜"	"学生"	"http://localhost:3000/img/labScenery2.jpg"	"本科"
+"5"	"嘻嘻嘻"	"学生"	"http://localhost:3000/img/labScenery2.jpg"	"本科"
+"6"	"哈哈哈"	"学生"	"http://localhost:3000/img/labScenery2.jpg"	"本科"

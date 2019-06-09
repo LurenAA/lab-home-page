@@ -1,0 +1,16 @@
+"id"	"title"	"pics"	"des"
+"1"	"Genome editing"	"[
+    ""http://localhost:3000/img/focus/1.jpeg"",
+    ""http://localhost:3000/img/focus/2.jpg""
+]"	"We are interested in developing novel genome editing tools and optimizing current editing techniques.
+
+致力于研发新型基因组编辑工具，优化和改进现有编辑手段。"
+"2"	"High-throughput functional genomics
+High-throughput functional genomics
+"	"[
+    ""http://localhost:3000/img/focus/4.jpeg"",
+    ""http://localhost:3000/img/focus/3.jpg""
+]"	"We are developing variety of high-throughput screening platforms based on genome editing technology, to facilitate the functional identification of coding/non-coding genes, regulatory elements, and critical domains/sequences."
+"3"	"Cancer and infection"	"[
+    ""http://localhost:3000/img/focus/5.jpg""
+]"	"结合高通量基因组编辑、高通量测序等技术手段，对影响癌症发生、发展及转移的关键基因突变进行鉴定和功能性分析，并对癌症的耐药机制、合成致死进行研究。同时探索病原微生物感染的关键宿主因子。"

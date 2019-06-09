@@ -1,0 +1,6 @@
+"id"	"title"	"href"	"des"	"date"
+"0"	"本课题组报道CRISPR混合文库筛选新方"	"http://css.cuishifeng.cn/flex.html"	"trim()函数的参数string是规定要检查的字符串。charlist参数是指定需要从字符串中去除那些特殊字符，比如，空格，回车符等，如果不设置此参数，将默认将所有的特殊字符都去掉，charlist参数的可选值如下表：
+
+"	"2019-4-20"
+"1"	"一件事一件事一件事一件事一件事一件事"	"https://www.nodebeginner.org/index-zh-cn.html"	"当position为static时，计算值是auto。为relative时，如果top和bottom都是auto，则它们的计算值是0；如果top和bottom其中一个为auto，则auto相当于另一个的负值，即top = -bottom；如果top和bottom的值都不为auto，则忽略bottom。"	"2019-4-20"
+"2"	"二件事二件事二件事二件事二件事"	"https://www.bilibili.com/"	"2018年11月5日，北京大学生命科学学院魏文胜课题组在Nature Biotechnology杂志在线发表了题为“Genome-wide screening for functional long noncoding RNAs in human cells by Cas9 ta... "	"2019-4-20"

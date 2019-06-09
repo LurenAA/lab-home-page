@@ -84,4 +84,5 @@ app.use(async function (ctx, next) {
   }
 })
 
-http.createServer(app.callback()).listen(3000)
+// http.createServer(app.callback()).listen(3000)
+app.listen(3000)
